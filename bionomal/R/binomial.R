@@ -1,77 +1,6 @@
-# code for the binomial package
+#functions for main binomial functions
 
-
-
-
-
-#this function checks whether prob is between 0 and 1
-check_prob <- function(prob) {
-  if (prob > 0 & prob < 1) {
-    return(TRUE)
-  }
-  else {
-    stop("p has to be a number betwen 0 and 1")
-  }
-}
-
-
-#checks if trials (number of trials) is a non-negative integer
-check_trials <- function(trials) {
-  if (trials > 0 & trials%%1 ==0) {
-    return(TRUE)
-  }
-  else {
-    stop("trials must be a non-negative integer")
-  }
-}
-
-#checks whether success is a non-negative integer and less than or equal to trials
-check_success <- function(success, trials) {
-  if (success >= 0 & success%%1 == 0 & success <= trials) {
-      return(TRUE)
-  }
-  else{
-    stop("invalid success value")
-  }
-}
-
-
-#calculates binomal mean given trials and prob
-aux_mean <- function(trials, prob) {
-  x <- trials * prob
-  x
-}
-
-
-#calculates binomal variance given trials and prob
-aux_variance <- function(trials, prob) {
-  x <- trials * prob * (1 - prob)
-  x
-}
-
-#calculates binomal mode given trials and prob
-aux_mode <- function(trials, prob) {
-  m <- round(trials * prob + prob)
-  if (m%%1==0 & trials%%2 != 0) {
-    return(c(m, m-1))
-  }
-  else {
-  m
-  }
-}
-
-#calculates binomal skewness given trials and prob
-aux_skewness <- function(trials, prob) {
-  skew <- (1 - 2 * prob) / sqrt(trials * prob * (1 - prob))
-  skew
-}
-
-
-#calculates binomal kurtosis given trials and prob
-aux_kurtosis <- function(trials, prob) {
-  kurt <- (1 - 6 * prob * (1 - prob)) / (trials * prob * (1 - prob))
-  kurt
-}
+source("R/check-binomial.R")
 
 
 #' @title binomial choose
@@ -82,7 +11,7 @@ aux_kurtosis <- function(trials, prob) {
 #' @examples bin_choose(n = 5, k = 2), bin_choose(5, 0), bin_choose(5, 1:3)
 #' @export
 bin_choose <- function(n, k){
-  if (n >= k) {
+  if (n >= k & n > 0 & k >= 0) {
     bchoose <- factorial(n) / (factorial(k) * factorial(n - k))
     return (bchoose)
   }
@@ -90,6 +19,13 @@ bin_choose <- function(n, k){
     stop("k cannot be greater than n")
   }
 }
+
+
+
+
+
+
+
 
 #' @title binomial probability
 #' @description calculates binomial probability given success, trials, and probability of success
@@ -116,6 +52,13 @@ bin_probability <- function(success, trials, prob) {
     bprob
   }
 }
+
+
+
+
+
+
+
 
 #' @title binomal distribution
 #' @description calculates the binomial distribution given number of trials and probability of success
@@ -145,6 +88,13 @@ plot.bindis <- function(bindis) {
 
 
 
+
+
+
+
+
+
+
 #' @title binomial cumulative distribution
 #'
 #'
@@ -170,6 +120,12 @@ plot.bindis <- function(bincum) {
   ggplot(data = bincum, mapping = aes(success, cumulative)) +
   geom_line()
 }
+
+
+
+
+
+
 
 #' @title binomial variable
 #'
