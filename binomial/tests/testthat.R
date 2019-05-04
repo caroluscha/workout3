@@ -1,4 +1,5 @@
 library(testthat)
-library(bionomal)
+library(binomial)
+library(ggplot2)
 
-test_check("bionomal")
+test_check("binomial")

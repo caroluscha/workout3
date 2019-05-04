@@ -27,8 +27,6 @@ print.binvar <- function (binvar) {
       "- number of trials\t:", binvar$trials, "\n",
       "- prob of success\t:", binvar$prob, "\n")
 }
-
-
 #' @export
 summary.binvar <- function(binvar) {
   trials <- binvar$trials
@@ -45,7 +43,6 @@ summary.binvar <- function(binvar) {
   class(sum_binvar) <- "summary.binvar"
   sum_binvar
 }
-
 #' @export
 print.summary.binvar <- function(sum_binvar) {
   cat("Binomial variable\n\nParameters\n",

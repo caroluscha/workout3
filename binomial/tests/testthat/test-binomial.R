@@ -1,4 +1,3 @@
-source("R/binomial.R")
 
 context("Tests for main binomial functions")
 

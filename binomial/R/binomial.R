@@ -8,7 +8,9 @@
 #' @param n number of trials (non-negative integer)
 #' @param k number of successes (non-negative integer less than trials)
 #' @return combinations of trials and success given n and k
-#' @examples bin_choose(n = 5, k = 2), bin_choose(5, 0), bin_choose(5, 1:3)
+#' @examples bin_choose(n = 5, k = 2)
+#' bin_choose(5, 0)
+#' bin_choose(5, 1:3)
 #' @export
 bin_choose <- function(n, k){
   if (n >= k & n > 0 & k >= 0) {
@@ -80,14 +82,11 @@ bin_distribution <- function (trials, prob) {
   class(bindis) <- c("bindis", "data.frame")
   bindis
 }
-
 #' @export
 plot.bindis <- function(bindis) {
-  library(ggplot2)
   ggplot(data = bindis, mapping = aes(success, probability)) +
   geom_col()
 }
-
 
 
 
@@ -104,7 +103,8 @@ plot.bindis <- function(bindis) {
 #' @return a "bincum" class object with "data.frame" secondary class.
 #' data frame has three columns success, probability, cumulative
 #' function also includes and plot function to plot a line plot of success and cumulative
-#' @examples dis2 <- bin_cumulative(trials = 5, prob = 0.5)
+#' @examples
+#' dis2 <- bin_cumulative(trials = 5, prob = 0.5)
 #' plot(dis2)
 #' @export
 bin_cumulative <- function(trials, prob) {
@@ -123,8 +123,8 @@ bin_cumulative <- function(trials, prob) {
   bincum
 }
 #' @export
-plot.bindis <- function(bincum) {
-  library(ggplot2)
+plot.bincum <- function(bincum) {
+
   ggplot(data = bincum, mapping = aes(success, cumulative)) +
   geom_line()
 }

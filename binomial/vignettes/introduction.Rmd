@@ -1,0 +1,75 @@
+---
+title: "Introduction to binomial package"
+author: "Carolus Chan"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(binomial)
+```
+
+
+## Binomial Distribution
+
+'binomial' is a package that is met to calculate and plot binomial probabilities and associated statistics. 
+
+
+## bin_choose 
+
+Given the number of trials `n` and successes `k`, one can use `bin_choose` to calculate the number of combinations
+
+```{r}
+bin_choose(n = 5, k = 2)
+```
+
+
+## bin_probability
+
+Given number of trials `trials` and successes `success` and probability of success `prob`, one can use `bin_probability` to calculate the binomial probability. 
+
+```{r}
+bin_probability(success = 2, trials = 5, prob = 0.5)
+```
+
+
+## bin_distribution
+
+Given number of trials `trials` and probability of success `prob`, one can use `bin_distribution` to generate a binomial distribution. In addition, `bin_distribution` has a plot function to visualize the distribution. 
+
+```{r}
+dis1 <- bin_distribution(trials = 5, prob = 0.5)
+dis1
+plot(dis1)
+```
+
+## bin_cumlative 
+
+Given number of trials `trials` and probability of success `prob`, one can use `bin_cumlative ` to generate a binomial distribution with the cumulative success probablity. In addition, `bin_cumlative ` has a plot function to visualize the cumulative distribution. 
+
+```{r}
+dis2 <- bin_cumulative(trials = 5, prob = 0.5)
+dis2
+plot(dis2)
+```
+
+## bin_variable
+
+`bin_variable` takes `trials` and `prob` and generates summary statistics: mean, variance, mode, skewness, kurtosis. You can use "bin_" followed by the desired statistic to get each on individually. 
+
+```{r}
+bin1 <- bin_variable(trials = 10, p = 0.3)
+binsum1 <- summary(bin1)
+binsum1
+
+bin_mean(trials = 10, p = 0.3)
+```
+

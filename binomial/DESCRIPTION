@@ -1,13 +1,17 @@
-Package: bionomal
+Package: binomial
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Binomial Distribution 
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Carolus Chan
+Description: Calculates binomial probability and distriubations along with other stats. Can use to plot distributions.
+Maintainer: Carolus Chan <carolusc@berkeley.edu>
+License: GPL-2
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat
+    ggplot2,
+    testthat,
+    knitr,
+    rmarkdown
+RoxygenNote: 6.1.1
+
